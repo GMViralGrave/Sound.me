@@ -54,6 +54,12 @@ def enable_hotkeys():
 def update_counts():
     print(f"({video_count} Videos / {decline_count} Declines)")
 
+def reset_counts():
+    global video_count, decline_count
+    video_count = 0
+    decline_count = 0
+    print("Counts have been reset.")
+
 def main():
     global video_count, decline_count  
 
@@ -62,7 +68,7 @@ def main():
         if keyboard.is_pressed('esc'):
             print("Program Exited.")
             break  
-        
+
         if keyboard.is_pressed('left') or keyboard.is_pressed('right') or keyboard.is_pressed('up') or keyboard.is_pressed('down'):
             time.sleep(0.1)  
             continue
@@ -74,6 +80,10 @@ def main():
         elif keyboard.is_pressed('='):  
             enable_hotkeys()
             time.sleep(0.2) 
+
+        if keyboard.is_pressed('4'):
+            reset_counts()
+            time.sleep(0.2)
 
         if hotkeys_enabled:
             if keyboard.is_pressed('1'):
@@ -88,7 +98,7 @@ def main():
 
             elif keyboard.is_pressed('2'): 
                 decline_count += 1
-                video_count +=1
+                video_count += 1
                 print("Declined")
                 scroll_to_top()
                 time.sleep(0.5)
@@ -107,8 +117,8 @@ def main():
                 time.sleep(0.2)
 
             elif keyboard.is_pressed('-'):
-                click_monday()  # Fixed indentation here
-                time.sleep(0.2)  # Fixed indentation here
+                click_monday()  
+                time.sleep(0.2)  
 
         elif keyboard.is_pressed('-'):
             click_monday()
